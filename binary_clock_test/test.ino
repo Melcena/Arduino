@@ -9,13 +9,9 @@ int pin4 = 6;
 const int button = 0;
 int buttonState = 0;
 int offButtonState = 0;
-
-//Pins för led och knapp-def goes here
- 
  
 void convBit(unsigned int x){ //Skicka vårt nummer till funktionen
 
- 
   bits[4] = (x & 1) + '0'; //Populera vår bit array. en bit åt gången med hjälp av AND.
   x >>= 1;
   bits[3] = (x & 1) + '0';
@@ -26,17 +22,25 @@ void convBit(unsigned int x){ //Skicka vårt nummer till funktionen
   x >>= 1;
   bits[0] = x + '0';
 }
- 
+
+void setup(){
+  pinMode(pin1, OUTPUT)
+  pinMode(pin2, OUTPUT)
+  pinMode(pin3, OUTPUT)
+  pinMode(pin4, OUTPUT)
+  pinMode(button, INPUT)
+}
+
 void loop(){
   buttonState = digitalRead(button);
   
   if (buttonState = HIGH){ //or variable namn för knapp
     counter ++;
- } 
- if (offButtonState = HIGH){
+  } 
+  if (offButtonState = HIGH){
     counter = 0;
   }
-  bits[] = convBit(counter);  
+  convBit(counter);  
   if (bits[0]!=0){
     digitalWrite(pin1, HIGH);
   } else
